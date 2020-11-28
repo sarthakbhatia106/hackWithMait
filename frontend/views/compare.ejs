@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dawai Lo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <header class="navbar is-success">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <i class="fas fa-stethoscope is-size-4"></i>
+                    <span class="ml-1 is-size-4">SASTI DAVAI</span>
+                </a>
+                <span class="navbar-burger burger" data-target="navBarMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a href="/" class="navbar-item is-active">
+                        Home
+                    </a>
+                    <a class="navbar-item">
+                        About
+                    </a>
+                    <a class="navbar-item">
+                        Contact Us
+                    </a>
+                    <span class="navbar-item">
+                        <a class="button is-success is-inverted">
+                            <span class="icon">
+                                <i class="fab fa-github"></i>
+                            </span>
+                            <span>Source Code</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section has-background-success">
+        <div class="columns">
+            <% for(let medicine of medicines){ %>
+            <div class="column mt-5">
+                <div class="card">
+                    <div class="card-content">
+
+                        <div class="title">
+                            <h1><%= medicine.name %> </h1>
+                        </div>
+
+                        <span><%= medicine.price %> </span>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </section>
+</body>
+
+</html>
