@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-async function scraper(search){
+async function scrapper(search){
 
     const extractMed= async(url)=>{
       const page = await browser.newPage();
@@ -32,11 +32,12 @@ async function scraper(search){
     }else{
       url='https://pharmeasy.in/search/all?name='.concat(list[0]).concat('+').concat(list[1]).concat('+').concat(list[2]);
     }
+    
 
-  let finalData=await extractMed(url);
-  console.log(finalData);
+  const finalData=await extractMed(url);
+  // console.log(finalData);
   await browser.close();
   return finalData;
 }
-
-module.exports=scraper;
+// scrapper("crocin");
+module.exports=scrapper;
