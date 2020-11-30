@@ -2,7 +2,12 @@ const express = require("express"),
     app = express(),
     bodyParser = require("body-parser");
 
-app.set("view engine", "ejs");
+const oneMg=require("../backend/1mg/scraper");
+const netMeds=require("../backend/netMeds/scraper");
+const PharmEasy=require("../backend/pharmEasy/scraper");
+
+
+    app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -14,26 +19,30 @@ app.get("/", (req, res) => {
 //     res.render("compare");
 // });
 
-app.post("/compare", (req, res) => {
+app.post("/compare", async (req, res) => {
     console.log(req.body.medicine);
     let medicineName = req.body.medicine;
+
+    const oneMgdata=await oneMg(medicineName);
+    const netMedsData=await netMeds(medicineName);
+    const pharmEasyData=await PharmEasy(medicineName);
 
     const medicines = [
         {
             website: "PharmEasy",
-            name: "Crocin",
-            price: 50.0,
+            name: pharmEasyData.pharmEasyname,
+            price: pharmEasyData.pharmEasyprice,
         },
 
         {
             website: "1mg",
-            name: "Crocin",
-            price: 52.3,
+            name: oneMgdata.oneMgname,
+            price: oneMgdata.oneMgprice,
         },
         {
-            website: "Netmed",
-            name: "Crocin",
-            price: 51.5,
+            website: "Netmeds",
+            name: netMedsData.netMedsname,
+            price: netMedsData.netMedsprice,
         },
     ];
 
