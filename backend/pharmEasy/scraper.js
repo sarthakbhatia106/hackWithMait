@@ -10,10 +10,10 @@ async function scrapper(search){
       let medicine= await page.evaluate(()=>{
 
         let json={};
-        json.name= document.querySelector('h1.ooufh').innerText.trim();
-        json.price= document.querySelector('div._1_yM9').innerText.trim();
+        json.pharmEasyname= document.querySelector('h1.ooufh').innerText.trim();
+        json.pharmEasyprice= document.querySelector('div._1_yM9').innerText.trim();
 
-        json.link="https://pharmeasy.in".concat(document.querySelector('a._3o0NT._1NxW8'))
+        json.pharmEasylink="".concat(document.querySelector('a._3o0NT._1NxW8'))
 
         return json;
       })

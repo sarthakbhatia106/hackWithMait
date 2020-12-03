@@ -10,10 +10,10 @@ async function scraper(search){
       let medicine= await page.evaluate(()=>{
 
         let json={};
-        json.name= document.querySelector('div.drug_c div.info').innerText.trim();
-        json.price= document.querySelector('div.pricebox span.final-price').innerText.trim();
+        json.netMedsname= document.querySelector('div.drug_c div.info').innerText.trim();
+        json.netMedsprice= document.querySelector('div.pricebox span.final-price').innerText.trim();
 
-        json.link="https://www.netmeds.com/".concat(document.querySelector('div.drug_c a'))
+        json.netMedslink="https://www.netmeds.com/".concat(document.querySelector('div.drug_c a'))
 
         return json;
       })

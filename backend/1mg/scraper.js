@@ -15,14 +15,14 @@ async function scraper(search){
 
         let nameA=box.querySelector('div > a > div.style__product-description___1vPQe > span');
         let nameB=box.querySelector('div > a > div.style__product-description___zY35s > div.style__pro-title___3G3rr')
-        json.name= nameA==null? nameB.innerText.concat(box.querySelector('div > a > div.style__product-description___zY35s > div.style__pack-size___3jScl').innerText) : nameA.innerText.concat(box.querySelector('div > a > div.style__product-description___1vPQe > div').innerText);
+        json.oneMgname= nameA==null? nameB.innerText.concat(box.querySelector('div > a > div.style__product-description___zY35s > div.style__pack-size___3jScl').innerText) : nameA.innerText.concat(box.querySelector('div > a > div.style__product-description___1vPQe > div').innerText);
 
         
         let priceA=box.querySelector('div > a > div.style__product-pricing___1OxnE > div > div.style__price-tag___KzOkY');
         let priceB=box.querySelector('div > a > div.style__product-pricing___1tj_E > div')
-        json.price= priceA==null? priceB.innerText: priceA.innerText;
+        json.oneMgprice= priceA==null? priceB.innerText: priceA.innerText;
 
-        json.link="https://www.1mg.com".concat(box.querySelector('div > a').getAttribute('href'));
+        json.oneMglink="https://www.1mg.com".concat(box.querySelector('div > a').getAttribute('href'));
 
         return json;
     })
@@ -44,6 +44,5 @@ async function scraper(search){
     return data;
 
 }
-scraper("mont lcz");
 
 module.exports=scraper;
